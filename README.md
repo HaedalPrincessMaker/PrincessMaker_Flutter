@@ -1,16 +1,24 @@
-# pm_flutter
+# 2024-2 해달 해커톤 모바일
 
-A new Flutter project.
+## 1. 사용 버전
 
-## Getting Started
+- IntelliJ IDEA 2024.3
+- Flutter SDK 3.24.4
+- Dart 3.5.4
+- Android SDK 35
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 2. 주요 기능
+### UI
+- [ ] 로그인 UI
+- [ ] 회원가입 UI
+- [ ] 메인화면 UI
+- [ ] 알람 리스트 UI
+- [ ] 알람 설정 UI
+- [ ] 마이페이지 UI
+- [ ] 친구 목록 UI
+- [ ] 친구 추가 UI
+- [ ] 알람 승인 UI
+- [ ] 알람 UI
+- [ ] 퀴즈 풀기 UI
+- [ ] 퀴즈 결과 UI
+- [ ] 퀴즈 설정 UI
