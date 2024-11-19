@@ -91,5 +91,25 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
+fonts:
+  - family: Gugi
+    fonts:
+      - asset: asset/font/Gugi-Regular.ttf
+  - family: NotoSansKR
+    fonts:
+      - asset: asset/font/NotoSansKR-Black.ttf
+      - asset: asset/font/NotoSansKR-Bold.ttf
+      - asset: asset/font/NotoSansKR-ExtraBold.ttf
+      - asset: asset/font/NotoSansKR-ExtraLight.ttf
+      - asset: asset/font/NotoSansKR-Light.ttf
+      - asset: asset/font/NotoSansKR-Medium.ttf
+      - asset: asset/font/NotoSansKR-Regular.ttf
+      - asset: asset/font/NotoSansKR-Thin.ttf
+      - asset: asset/font/NotoSansKR-SemiBold.ttf
+      - asset: asset/font/NotoSansKR-VariableFont.ttf
+
+
+
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
