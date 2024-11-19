@@ -36,7 +36,6 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   flutter_riverpod: ^2.6.1
-  flutter_native_splash: ^2.4.3
 
 dev_dependencies:
   flutter_test:
@@ -61,8 +60,27 @@ flutter:
   uses-material-design: true
 
   assets:
-    - asset/logo_transparent.png
-    - asset/logoInvertedTransparent.png
+    - asset/image/
+
+  fonts:
+    - family: Gugi
+      fonts:
+        - asset: asset/font/Gugi-Regular.ttf
+    - family: NotoSansKR
+      fonts:
+        - asset: asset/font/NotoSansKR-Thin.ttf       # 100
+        - asset: asset/font/NotoSansKR-ExtraLight.ttf # 200
+        - asset: asset/font/NotoSansKR-Light.ttf      # 300
+        - asset: asset/font/NotoSansKR-Regular.ttf    # 400 (기본)
+        - asset: asset/font/NotoSansKR-Medium.ttf     # 500
+        - asset: asset/font/NotoSansKR-SemiBold.ttf   # 600
+        - asset: asset/font/NotoSansKR-Bold.ttf       # 700
+        - asset: asset/font/NotoSansKR-ExtraBold.ttf  # 800
+        - asset: asset/font/NotoSansKR-Black.ttf      # 900
+    - family: Hakgyo
+      fonts:
+        - asset: asset/font/HakgyoansimDunggeunmisoTTFR.ttf
+        - asset: asset/font/HakgyoansimDunggeunmisoTTFB.ttf
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
@@ -91,22 +109,6 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
-fonts:
-  - family: Gugi
-    fonts:
-      - asset: asset/font/Gugi-Regular.ttf
-  - family: NotoSansKR
-    fonts:
-      - asset: asset/font/NotoSansKR-Black.ttf
-      - asset: asset/font/NotoSansKR-Bold.ttf
-      - asset: asset/font/NotoSansKR-ExtraBold.ttf
-      - asset: asset/font/NotoSansKR-ExtraLight.ttf
-      - asset: asset/font/NotoSansKR-Light.ttf
-      - asset: asset/font/NotoSansKR-Medium.ttf
-      - asset: asset/font/NotoSansKR-Regular.ttf
-      - asset: asset/font/NotoSansKR-Thin.ttf
-      - asset: asset/font/NotoSansKR-SemiBold.ttf
-      - asset: asset/font/NotoSansKR-VariableFont.ttf
 
 
 
