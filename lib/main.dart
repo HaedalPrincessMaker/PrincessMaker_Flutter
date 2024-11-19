@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_princess_maker/view/login/login_register.dart';
 
 void main() {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  waitForShowingSplash();
-  FlutterNativeSplash.remove();
   runApp(const Alarm());
 }
 
