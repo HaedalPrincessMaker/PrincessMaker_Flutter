@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_princess_maker/common/text_widget/logo.dart';
 import 'package:flutter_princess_maker/common/react_size.dart';
 
+import '../../function/kakao_login.dart';
+
+
 class LoginRegister extends StatelessWidget {
   const LoginRegister({super.key});
 
@@ -34,8 +37,13 @@ class LoginRegister extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: garo(context, 0.05)),
-                child: Image.asset(
-                  'asset/image/kakao_login.png',
+                child: GestureDetector(
+                  onTap: () async {
+                    kakaoLogin();
+                  },
+                  child: Image.asset(
+                    'asset/image/kakao_login.png',
+                  ),
                 ),
               ),
               SizedBox(

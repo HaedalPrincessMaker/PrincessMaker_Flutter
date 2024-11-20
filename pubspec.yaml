@@ -36,6 +36,13 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   flutter_riverpod: ^2.6.1
+  dio: ^5.7.0
+  json_serializable: ^6.8.0
+  platform: ^3.1.6
+  shared_preferences: ^2.3.2
+  kakao_flutter_sdk: ^1.9.6 # 카카오 로그인 API 패키지
+  crypto: ^3.0.6
+  encrypt: ^5.0.3
 
 dev_dependencies:
   flutter_test:
