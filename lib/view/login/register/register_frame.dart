@@ -23,6 +23,7 @@ class _FrameState extends ConsumerState<RegisterFrame>
       resizeToAvoidBottomInset: true,
       backgroundColor: Colors.white,
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         backgroundColor: Colors.white,
         title: getLogo(context: context, width: 0.065),
         centerTitle: true, //Row와 함께 이용하여 Ttile 가운데 정렬

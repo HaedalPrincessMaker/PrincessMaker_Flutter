@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_princess_maker/secret/app_key.dart';
 import 'package:flutter_princess_maker/view/login/login_register.dart';
 import 'package:flutter_princess_maker/view/login/register/register_a.dart';
+import 'package:flutter_princess_maker/view/mainView/root_tab.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kakao_flutter_sdk_auth/kakao_flutter_sdk_auth.dart';
 
@@ -28,7 +29,7 @@ class Alarm extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'NotoSansKR',
       ),
-      home: RegisterA(),
+      home: RootTab(),
     );
   }
 }
