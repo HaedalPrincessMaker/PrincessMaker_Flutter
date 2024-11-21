@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../react_size.dart';
+
 Widget pmbutton({
   required BuildContext context,
   required String buttonText,
@@ -11,7 +13,7 @@ Widget pmbutton({
     style: ButtonStyle(
       textStyle: WidgetStateProperty.all(
         TextStyle(
-          fontSize: 18,
+          fontSize: garo(context, 0.045),
           fontWeight: FontWeight.bold,
           color: Colors.white,
         ),
