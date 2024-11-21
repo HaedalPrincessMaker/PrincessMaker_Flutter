@@ -4,14 +4,14 @@ import 'package:flutter_princess_maker/common/react_size.dart';
 import 'package:flutter_princess_maker/common/text_widget/input.dart';
 import 'package:flutter_princess_maker/view/login/register/register_frame.dart';
 
-class RegisterA extends StatefulWidget {
-  const RegisterA({super.key});
+class Register extends StatefulWidget {
+  const Register({super.key});
 
   @override
-  State<RegisterA> createState() => _RegisterAState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _RegisterAState extends State<RegisterA> {
+class _RegisterState extends State<Register> {
   late ScrollController scrollController;
 
   final TextEditingController studentIDController = TextEditingController();
