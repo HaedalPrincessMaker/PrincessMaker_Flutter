@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_princess_maker/secret/app_key.dart';
 import 'package:flutter_princess_maker/view/login/login_register.dart';
+import 'package:flutter_princess_maker/view/login/register/register_a.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kakao_flutter_sdk_auth/kakao_flutter_sdk_auth.dart';
 
 
@@ -12,7 +14,7 @@ void main() {
   KakaoSdk.init(
     nativeAppKey: '${NATIVE_APP_KEY}',
   );
-  runApp(const Alarm());
+  runApp(ProviderScope(child: Alarm()));
 }
 
 class Alarm extends StatelessWidget {
@@ -23,7 +25,10 @@ class Alarm extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginRegister(),
+      theme: ThemeData(
+        fontFamily: 'NotoSansKR',
+      ),
+      home: RegisterA(),
     );
   }
 }

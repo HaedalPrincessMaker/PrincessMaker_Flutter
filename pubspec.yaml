@@ -43,6 +43,7 @@ dependencies:
   kakao_flutter_sdk: ^1.9.6 # 카카오 로그인 API 패키지
   crypto: ^3.0.6
   encrypt: ^5.0.3
+  flutter_keyboard_visibility: ^6.0.0
 
 dev_dependencies:
   flutter_test:
