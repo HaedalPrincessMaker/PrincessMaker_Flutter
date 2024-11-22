@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "173347122669",
+    "project_id": "princess-maker-firebase",
+    "storage_bucket": "princess-maker-firebase.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173347122669:android:937f5954397d7086b2cbe4",
+        "android_client_info": {
+          "package_name": "com.example.pm_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "173347122669-9rc0job58j8udoql7ets67584pnqfj7d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYVV1TanixYhMgtKyB_4HZLzC1gKON6ec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "173347122669-9rc0job58j8udoql7ets67584pnqfj7d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

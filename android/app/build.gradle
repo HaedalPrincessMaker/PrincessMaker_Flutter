@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.example.pm_flutter"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk 34
     ndkVersion = "25.1.8937393"
 
     compileOptions {
@@ -28,6 +28,7 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        multiDexEnabled true
     }
 
     buildTypes {
