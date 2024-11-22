@@ -82,7 +82,7 @@ flutter:
   assets:
     - asset/image/
     - asset/music/army.mp3
-
+    - asset/data/auth.json
   fonts:
     - family: Gugi
       fonts:
