@@ -5,7 +5,6 @@ import 'package:flutter_princess_maker/view/mainView/home_ui.dart';
 import 'package:flutter_princess_maker/view/mainView/my_profile_ui.dart';
 import 'package:flutter_princess_maker/view/mainView/notification_ui.dart';
 import 'package:flutter_princess_maker/view/mainView/quiz_ui.dart';
-
 import '../default_layout.dart';
 
 /**

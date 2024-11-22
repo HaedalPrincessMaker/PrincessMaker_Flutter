@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_princess_maker/common/button/pmbutton.dart';
 import 'package:flutter_princess_maker/common/text_widget/logo.dart';
 import 'package:flutter_princess_maker/common/react_size.dart';
+import 'package:flutter_princess_maker/view/login/register/register.dart';
 
-import '../../function/kakao_login.dart';
-
+import 'login.dart';
 
 class LoginRegister extends StatelessWidget {
   const LoginRegister({super.key});
@@ -16,40 +17,77 @@ class LoginRegister extends StatelessWidget {
         child: Container(
           color: Colors.white,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              SizedBox(
-                height: sero(context, 0.4),
-              ),
-              getLogo(context: context, width: 0.2),
-              SizedBox(
-                height: sero(context, 0.195),
-              ),
-              Text(
-                "내 의지로 시작되는 아침",
-                style: TextStyle(
-                    fontFamily: 'Hakgyo',
-                    fontSize: garo(context, 0.06),
-                    fontWeight: FontWeight.w500),
-              ),
-              SizedBox(
-                height: sero(context, 0.015),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: garo(context, 0.05)),
-                child: GestureDetector(
-                  onTap: () async {
-                    kakaoLogin();
-                  },
-                  child: Image.asset(
-                    'asset/image/kakao_login.png',
-                  ),
+              Center(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: sero(context, 0.4),
+                    ),
+                    getLogo(context: context, width: 0.2),
+                    SizedBox(
+                      height: sero(context, 0.195),
+                    ),
+                    Text(
+                      "내 의지로 시작되는 아침",
+                      style: TextStyle(
+                          fontFamily: 'Hakgyo',
+                          fontSize: garo(context, 0.06),
+                          fontWeight: FontWeight.w500),
+                    ),
+                    SizedBox(
+                      height: sero(context, 0.015),
+                    ),
+                    Padding(
+                      padding:
+                      EdgeInsets.symmetric(horizontal: garo(context, 0.01)),
+                      child: GestureDetector(
+                        onTap: () {
+
+                        },
+                        child: Container(
+                          width: garo(context, 0.95),
+                          child: pmbutton(
+                            context: context,
+                            buttonText: ("로그인"),
+                            onpressed: () => Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => Login())),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: sero(context, 0.015),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: garo(context, 0.01)),
+                      child: GestureDetector(
+                        onTap: () {
+
+                        },
+                        child: Container(
+                          width: garo(context, 0.95),
+                          child: pmbutton(
+                            context: context,
+                            buttonText: ("회원가입"),
+                            onpressed: ()=>Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => Register())
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: sero(context, 0.01),
+                    ),
+                    teamName(context: context),
+                  ],
                 ),
               ),
-              SizedBox(
-                height: sero(context, 0.08),
-              ),
-              teamName(context: context),
             ],
           ),
         ),
