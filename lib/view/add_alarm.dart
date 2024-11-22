@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_princess_maker/common/button/pmbutton.dart';
+import 'package:flutter_princess_maker/common/emptyBox.dart';
 import 'package:flutter_princess_maker/common/react_size.dart';
 import 'package:flutter_princess_maker/view/default_layout.dart';
 
@@ -27,6 +28,7 @@ class _AddAlarmState extends State<AddAlarm> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              emptyBox(context, 0.1),
               TextButton(
                 style: ButtonStyle(
                     foregroundColor: WidgetStateProperty.all(Colors.black)),
@@ -50,9 +52,10 @@ class _AddAlarmState extends State<AddAlarm> {
                 },
                 child: Text(
                   _timeButtonText(initialTime),
-                  style: _questionStyle,
+                  style: _questionStyle.copyWith(fontSize: garo(context, 0.125)),
                 ),
               ),
+              emptyBox(context, 0.1),
               Text(
                 "요일 설정",
                 style: _questionStyle,
@@ -69,10 +72,16 @@ class _AddAlarmState extends State<AddAlarm> {
                   _dayButtion("일"),
                 ],
               ),
+              emptyBox(context, 0.05),
               Text(
                 "알람음 설정",
                 style: _questionStyle,
               ),
+              Text(
+                "알람음을 설정하는 공간입니다. 아직 미구현",
+                style: _questionStyle,
+              ),
+              emptyBox(context, 0.05),
               pmbutton(
                 context: context,
                 buttonText: "친구에게 승인 요청",

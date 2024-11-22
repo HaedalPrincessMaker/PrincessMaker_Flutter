@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_princess_maker/common/button/pmbutton.dart';
 import 'package:flutter_princess_maker/common/react_size.dart';
 import 'package:flutter_princess_maker/common/text_widget/input.dart';
+import 'package:flutter_princess_maker/json/member.dart';
 import 'package:flutter_princess_maker/view/login/register/register_frame.dart';
+
+import '../../../common/emptyBox.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -52,13 +55,13 @@ class _RegisterState extends State<Register> {
         physics: BouncingScrollPhysics(),
         controller: scrollController,
         children: [
-          emptyBox(0.2),
+          emptyBox(context, 0.2),
           Image.asset(
             'asset/image/knu.png',
             width: garo(context, 0.1),
             height: sero(context, 0.1),
           ),
-          emptyBox(0.2),
+          emptyBox(context, 0.2),
           Padding(
             padding: EdgeInsets.all(garo(context, 0.05)),
             child: Column(
@@ -69,7 +72,7 @@ class _RegisterState extends State<Register> {
                   style: TextStyle(
                       fontFamily: 'Hakgyo', fontSize: garo(context, 0.05)),
                 ),
-                emptyBox(0.015),
+                emptyBox(context, 0.015),
                 textInputBox(
                     context: context,
                     controller: studentIDController,
@@ -92,7 +95,7 @@ class _RegisterState extends State<Register> {
                   style: TextStyle(
                       fontFamily: 'Hakgyo', fontSize: garo(context, 0.05)),
                 ),
-                emptyBox(0.015),
+                emptyBox(context, 0.015),
                 textInputBox(
                     context: context,
                     controller: nicknameController,
@@ -102,12 +105,16 @@ class _RegisterState extends State<Register> {
                     },
                     hintText: "닉네임을 입력해주세요",
                     fontSize: garo(context, 0.04)),
-                emptyBox(0.02),
+                emptyBox(context, 0.02),
                 pmbutton(
                   context: context,
                   buttonText: '회원가입 완료',
                   onpressed: () {
-                    //TODO : 회원 가입 로직 넣기
+                    Member newMember = Member(
+                      studentId: '12345',
+                      nickname: 'JohnDoe',
+                    );
+                    sendMemberData(newMember);
                     print("click 회원가입 완료");
                   },
                 ),
@@ -116,12 +123,6 @@ class _RegisterState extends State<Register> {
           ),
         ],
       ),
-    );
-  }
-
-  Widget emptyBox(double size) {
-    return SizedBox(
-      height: sero(context, size),
     );
   }
 }
