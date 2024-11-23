@@ -6,6 +6,7 @@ import 'package:flutter_princess_maker/view/add_alarm.dart';
 import 'package:flutter_princess_maker/view/alarm_example.dart' as af;
 
 import '../../storage/alarm_storage.dart';
+import '../editAlarm.dart';
 
 class AlarmListUi extends StatefulWidget {
   const AlarmListUi({super.key});
@@ -45,38 +46,45 @@ class _AlarmListUiState extends State<AlarmListUi> {
           SliverList.separated(
             itemBuilder: (BuildContext context, int index) {
               final alarm = myAlarms[index];
-              return Padding(
-                padding: EdgeInsets.symmetric(horizontal: garo(context, 0.025)),
-                child: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.black,
+              return GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => EditAlarmScreen(alarm: alarm, index: index),
+                  ));
+                },
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: garo(context, 0.025)),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.black,
+                      ),
                     ),
-                  ),
-                  height: sero(context, 0.1), // 알람 항목 높이 설정
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      // 알람 시간과 요일 표시
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          emptyBox(context, 0.01),
-                          Text(
-                            "알람 시간: ${_formatTime(alarm.timeOfDay!)}",
-                            style: TextStyle(fontFamily: 'Hakgoy', fontSize: garo(context, 0.06)),
-                          ),
-                          Text(
-                            "알람 요일: ${alarm.selectedDays?.join(', ')}",
-                            style: TextStyle(fontFamily: 'Gugi', fontSize: garo(context, 0.04)),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        width: garo(context, 0.15),
-                        child: (alarm.isApproved) ? Icon(Icons.edit_attributes_rounded) : Icon(Icons.edit_attributes_outlined)
-                      ),
-                    ],
+                    height: sero(context, 0.1), // 알람 항목 높이 설정
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        // 알람 시간과 요일 표시
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            emptyBox(context, 0.01),
+                            Text(
+                              "알람 시간: ${_formatTime(alarm.timeOfDay!)}",
+                              style: TextStyle(fontFamily: 'Hakgoy', fontSize: garo(context, 0.06)),
+                            ),
+                            Text(
+                              "알람 요일: ${alarm.selectedDays?.join(', ')}",
+                              style: TextStyle(fontFamily: 'Gugi', fontSize: garo(context, 0.04)),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: garo(context, 0.15),
+                          child: (alarm.isApproved) ? Icon(Icons.edit_attributes_rounded) : Icon(Icons.edit_attributes_outlined)
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               );
