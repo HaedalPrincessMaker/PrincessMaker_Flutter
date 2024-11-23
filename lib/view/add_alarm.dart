@@ -104,6 +104,7 @@ class _AddAlarmState extends State<AddAlarm> {
                   AlarmInfo newAlarm = AlarmInfo(
                     timeOfDay: initialTime,
                     selectedDays: selectedDays,
+                    isApproved: false,
                   );
 
                   alarms.add(newAlarm);

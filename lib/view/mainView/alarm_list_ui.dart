@@ -28,10 +28,12 @@ class _AlarmListUiState extends State<AlarmListUi> {
   // AlarmExample 인스턴스를 생성하여 setWeeklyAlarm 호출
   void doSetWeeklyAlarm(AlarmInfo alarm) async {
     af.AlarmExample alarmExample = af.AlarmExample();
-    await alarmExample.setWeeklyAlarm(
-      timeOfDay: alarm.timeOfDay!,
-      selectedDays: alarm.selectedDays!,
-    );
+    if(alarm.isApproved) {
+      await alarmExample.setWeeklyAlarm(
+        timeOfDay: alarm.timeOfDay!,
+        selectedDays: alarm.selectedDays!,
+      );
+    }
   }
 
   @override
@@ -69,6 +71,10 @@ class _AlarmListUiState extends State<AlarmListUi> {
                             style: TextStyle(fontFamily: 'Gugi', fontSize: garo(context, 0.04)),
                           ),
                         ],
+                      ),
+                      SizedBox(
+                        width: garo(context, 0.15),
+                        child: (alarm.isApproved) ? Icon(Icons.edit_attributes_rounded) : Icon(Icons.edit_attributes_outlined)
                       ),
                     ],
                   ),
