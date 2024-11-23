@@ -20,7 +20,7 @@ class AddAlarm extends StatefulWidget {
 
 class _AddAlarmState extends State<AddAlarm> {
   TimeOfDay initialTime = TimeOfDay.now();
-  List<String> selectedDays = [];  // Store selected days of the week
+  List<String> selectedDays = []; // Store selected days of the week
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,8 @@ class _AddAlarmState extends State<AddAlarm> {
                 },
                 child: Text(
                   _timeButtonText(initialTime),
-                  style: _questionStyle.copyWith(fontSize: garo(context, 0.125)),
+                  style:
+                      _questionStyle.copyWith(fontSize: garo(context, 0.125)),
                 ),
               ),
               emptyBox(context, 0.1),
@@ -97,15 +98,19 @@ class _AddAlarmState extends State<AddAlarm> {
               SizedBox(
                 width: garo(context, 0.758),
                 child: Center(
-                  child: pmbutton(context: context, buttonText: "친구찾기", onpressed:  () {
-                  // 버튼 클릭 시 showDialog 실행
-                  showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return FriendSearchDialog();
-                  },
-                );
-              },)
+                  child: pmbutton(
+                    context: context,
+                    buttonText: "친구찾기",
+                    onpressed: () {
+                      // 버튼 클릭 시 showDialog 실행
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return FriendSearchDialog();
+                        },
+                      );
+                    },
+                  ),
                 ),
               ),
               emptyBox(context, 0.1),
@@ -146,12 +151,10 @@ class _AddAlarmState extends State<AddAlarm> {
                   );
                   Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (context) => RootTab()),
-                        (Route<dynamic> route) => false,  // 로그인 화면을 제거하고 메인 화면으로 이동
+                    (Route<dynamic> route) => false, // 로그인 화면을 제거하고 메인 화면으로 이동
                   );
                 },
               ),
-
-
             ],
           ),
         ),
@@ -162,7 +165,7 @@ class _AddAlarmState extends State<AddAlarm> {
   String _timeButtonText(TimeOfDay time) {
     String division = (time.hour < 13) ? "오전" : "오후";
     String hour =
-    (time.hour < 13) ? time.hour.toString() : (time.hour - 12).toString();
+        (time.hour < 13) ? time.hour.toString() : (time.hour - 12).toString();
     return division +
         " " +
         hour.padLeft(2, "0") +
@@ -173,8 +176,11 @@ class _AddAlarmState extends State<AddAlarm> {
   Widget _dayButton(String day) {
     bool isSelected = selectedDays.contains(day);
 
-    ButtonStyle _unpick = ButtonStyle(foregroundColor: WidgetStateProperty.all(Colors.black));
-    ButtonStyle _pick = ButtonStyle(foregroundColor: WidgetStateProperty.all(Colors.white), backgroundColor: WidgetStateProperty.all(Colors.black));
+    ButtonStyle _unpick =
+        ButtonStyle(foregroundColor: WidgetStateProperty.all(Colors.black));
+    ButtonStyle _pick = ButtonStyle(
+        foregroundColor: WidgetStateProperty.all(Colors.white),
+        backgroundColor: WidgetStateProperty.all(Colors.black));
 
     return Container(
       width: garo(context, 0.1),

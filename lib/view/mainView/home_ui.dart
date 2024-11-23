@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_princess_maker/common/react_size.dart';
+import 'package:flutter_princess_maker/view/alarm_example.dart';
+
+import '../../storage/alarm_storage.dart';
 
 class HomeUi extends StatelessWidget {
   const HomeUi({super.key});
@@ -11,9 +16,24 @@ class HomeUi extends StatelessWidget {
 
     TextStyle sub = main.copyWith(fontSize: garo(context, 0.045));
 
+    final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+    Future<void> onStopButtonPressed(String? payload) async {
+      print("Stop button pressed!");
+
+      // Cancel the alarm notification by ID
+      await flutterLocalNotificationsPlugin.cancel(1643600518);
+      SystemNavigator.pop();
+      alarms.clear();// Example ID; adjust based on your alarm ID
+
+      print("Alarm stopped.");
+    }
+
+
+
     return SafeArea(
         child: Center(
-              child: Padding(
+      child: Padding(
         padding: EdgeInsets.symmetric(horizontal: garo(context, 0.025)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -35,7 +55,7 @@ class HomeUi extends StatelessWidget {
             ),
           ],
         ),
-              ),
-            ));
+      ),
+    ));
   }
 }

@@ -99,8 +99,8 @@ class _RootTabState extends State<RootTab>
             label: '알람',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.quiz_outlined),
-            label: '퀴즈',
+            icon: Icon(Icons.highlight_off),
+            label: '알람끄기',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
