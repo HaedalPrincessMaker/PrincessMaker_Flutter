@@ -6,7 +6,10 @@ import 'package:flutter_princess_maker/view/default_layout.dart';
 import 'package:flutter_princess_maker/view/mainView/alarm_list_ui.dart';
 import 'package:flutter_princess_maker/view/mainView/root_tab.dart';
 
+import '../const.dart';
+import '../sendPushNotification.dart';
 import '../storage/alarm_storage.dart';
+import 'friend_search_dialog.dart';
 
 class AddAlarm extends StatefulWidget {
   const AddAlarm({super.key});
@@ -86,7 +89,26 @@ class _AddAlarmState extends State<AddAlarm> {
                 "현재 기상나팔만 지원하고 있습니다",
                 style: _questionStyle.copyWith(fontSize: garo(context, 0.05)),
               ),
-              emptyBox(context, 0.05),
+              emptyBox(context, 0.025),
+              Text(
+                "친구 찾기",
+                style: _questionStyle,
+              ),
+              SizedBox(
+                width: garo(context, 0.758),
+                child: Center(
+                  child: pmbutton(context: context, buttonText: "친구찾기", onpressed:  () {
+                  // 버튼 클릭 시 showDialog 실행
+                  showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return FriendSearchDialog();
+                  },
+                );
+              },)
+                ),
+              ),
+              emptyBox(context, 0.1),
               pmbutton(
                 context: context,
                 buttonText: "알람 생성",
@@ -108,6 +130,12 @@ class _AddAlarmState extends State<AddAlarm> {
                   );
 
                   alarms.add(newAlarm);
+
+                  String token = fffcm; // FCM 토큰
+                  String title = "[REQ : APPROVE] : Friends send request";
+                  String body = "freinds send a request to you for request approve alarm";
+
+                  sendPushNotification(token, title, body);
 
                   // Save the alarm (this could be saved in local storage, shared preferences, or a database)
                   // await saveAlarm(newAlarm); // Assuming `saveAlarm` is a function you've defined

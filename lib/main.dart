@@ -10,7 +10,10 @@ import 'package:flutter_princess_maker/storage/pm_storage.dart';
 import 'package:flutter_princess_maker/view/login/login_register.dart';
 import 'package:flutter_princess_maker/view/mainView/root_tab.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:kakao_flutter_sdk_auth/kakao_flutter_sdk_auth.dart';
+
+import 'const.dart';
 
 void main() async {
   // Ensure Flutter bindings are initialized before Firebase
@@ -106,8 +109,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'NotoSansKR', // Customize your font family
       ),
-      // home: (storage.containsKey("userId")) ? RootTab() : LoginRegister(),
-      home: RootTab()
+      home: (storage.containsKey("userId")) ? RootTab() : LoginRegister(),
+      // home: RootTab()
     );
   }
 }
@@ -115,6 +118,15 @@ class MyApp extends StatelessWidget {
 // Firebase Background Messaging Handler
 Future<void> fbMsgBackgroundHandler(RemoteMessage message) async {
   print("[FCM - Background] MESSAGE : ${message.messageId}");
+  saveMessage(message);
+
+  if (message.notification != null) {
+    saveMessage(message);
+    print('Message notification title: ${message.notification?.title}');
+    print('Message notification body: ${message.notification?.body}');
+
+    // Show notification in the foreground
+  }
   // Handle background message
 }
 
@@ -126,7 +138,9 @@ Future<void> fbMsgForegroundHandler(
   print('[FCM - Foreground] MESSAGE : ${message.notification}');
 
   if (message.notification != null) {
-    print('Message also contained a notification: ${message.notification}');
+    saveMessage(message);
+    print('Message notification title: ${message.notification?.title}');
+    print('Message notification body: ${message.notification?.body}');
 
     // Show notification in the foreground
     flutterLocalNotificationsPlugin.show(
@@ -159,4 +173,16 @@ void clickMessageEvent(RemoteMessage message) {
   print('Notification clicked! Data: ${message.data}');
   // Example: Navigate based on the message data
   // Navigator.pushNamed(context, '/specificPage', arguments: message.data);
+}
+
+void saveMessage(RemoteMessage message) {
+  if (message.notification != null) {
+    print('Message notification title: ${message.notification?.title}');
+    print('Message notification body: ${message.notification?.body}');
+
+    notice.add('${message.notification?.title} : ${message.notification?.body}');
+
+    Fluttertoast.showToast(msg: '${message.notification?.title} : ${message.notification?.body}', gravity: ToastGravity.CENTER);
+    // Show notification in the foregrou
+  }
 }
