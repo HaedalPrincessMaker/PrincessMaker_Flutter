@@ -3,6 +3,10 @@ import 'package:flutter_princess_maker/common/button/pmbutton.dart';
 import 'package:flutter_princess_maker/common/emptyBox.dart';
 import 'package:flutter_princess_maker/common/react_size.dart';
 import 'package:flutter_princess_maker/view/default_layout.dart';
+import 'package:flutter_princess_maker/view/mainView/alarm_list_ui.dart';
+import 'package:flutter_princess_maker/view/mainView/root_tab.dart';
+
+import '../storage/alarm_storage.dart';
 
 class AddAlarm extends StatefulWidget {
   const AddAlarm({super.key});
@@ -13,6 +17,7 @@ class AddAlarm extends StatefulWidget {
 
 class _AddAlarmState extends State<AddAlarm> {
   TimeOfDay initialTime = TimeOfDay.now();
+  List<String> selectedDays = [];  // Store selected days of the week
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +36,7 @@ class _AddAlarmState extends State<AddAlarm> {
               emptyBox(context, 0.1),
               TextButton(
                 style: ButtonStyle(
-                    foregroundColor: WidgetStateProperty.all(Colors.black)),
+                    foregroundColor: MaterialStateProperty.all(Colors.black)),
                 onPressed: () async {
                   final TimeOfDay? timeOfDay = await showTimePicker(
                     hourLabelText: "시",
@@ -63,30 +68,61 @@ class _AddAlarmState extends State<AddAlarm> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  _dayButtion("월"),
-                  _dayButtion("화"),
-                  _dayButtion("수"),
-                  _dayButtion("목"),
-                  _dayButtion("금"),
-                  _dayButtion("토"),
-                  _dayButtion("일"),
+                  _dayButton("월"),
+                  _dayButton("화"),
+                  _dayButton("수"),
+                  _dayButton("목"),
+                  _dayButton("금"),
+                  _dayButton("토"),
+                  _dayButton("일"),
                 ],
               ),
               emptyBox(context, 0.05),
               Text(
-                "알람음 설정",
+                "알람음",
                 style: _questionStyle,
               ),
               Text(
-                "알람음을 설정하는 공간입니다. 아직 미구현",
-                style: _questionStyle,
+                "현재 기상나팔만 지원하고 있습니다",
+                style: _questionStyle.copyWith(fontSize: garo(context, 0.05)),
               ),
               emptyBox(context, 0.05),
               pmbutton(
                 context: context,
-                buttonText: "친구에게 승인 요청",
-                onpressed: () => print("승인 요청 버튼 클릭"),
+                buttonText: "알람 생성",
+                onpressed: () async {
+                  // Check if at least one day is selected
+                  if (selectedDays.isEmpty) {
+                    // Show a message or snackbar
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text("요일을 선택해 주세요")),
+                    );
+                    return;
+                  }
+
+                  // Create an AlarmInfo object with the selected time and days
+                  AlarmInfo newAlarm = AlarmInfo(
+                    timeOfDay: initialTime,
+                    selectedDays: selectedDays,
+                  );
+
+                  alarms.add(newAlarm);
+
+                  // Save the alarm (this could be saved in local storage, shared preferences, or a database)
+                  // await saveAlarm(newAlarm); // Assuming `saveAlarm` is a function you've defined
+
+                  // Optionally, show a confirmation message or navigate back
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("알람이 저장되었습니다.")),
+                  );
+                  Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (context) => RootTab()),
+                        (Route<dynamic> route) => false,  // 로그인 화면을 제거하고 메인 화면으로 이동
+                  );
+                },
               ),
+
+
             ],
           ),
         ),
@@ -97,7 +133,7 @@ class _AddAlarmState extends State<AddAlarm> {
   String _timeButtonText(TimeOfDay time) {
     String division = (time.hour < 13) ? "오전" : "오후";
     String hour =
-        (time.hour < 13) ? time.hour.toString() : (time.hour - 12).toString();
+    (time.hour < 13) ? time.hour.toString() : (time.hour - 12).toString();
     return division +
         " " +
         hour.padLeft(2, "0") +
@@ -105,13 +141,25 @@ class _AddAlarmState extends State<AddAlarm> {
         time.minute.toString().padLeft(2, "0");
   }
 
-  Widget _dayButtion(String day) {
+  Widget _dayButton(String day) {
+    bool isSelected = selectedDays.contains(day);
+
+    ButtonStyle _unpick = ButtonStyle(foregroundColor: WidgetStateProperty.all(Colors.black));
+    ButtonStyle _pick = ButtonStyle(foregroundColor: WidgetStateProperty.all(Colors.white), backgroundColor: WidgetStateProperty.all(Colors.black));
+
     return Container(
       width: garo(context, 0.1),
       child: TextButton(
-        style:
-            ButtonStyle(foregroundColor: WidgetStateProperty.all(Colors.black)),
-        onPressed: () => print('select : $day'),
+        style: (isSelected) ? _pick : _unpick,
+        onPressed: () {
+          setState(() {
+            if (isSelected) {
+              selectedDays.remove(day);
+            } else {
+              selectedDays.add(day);
+            }
+          });
+        },
         child: Text(day),
       ),
     );

@@ -1,8 +1,8 @@
-// import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-//
-// // Create storage
-// final storage = new FlutterSecureStorage();
-//
+import 'dart:collection';
+
+// Create storage
+final Map<String, String> storage = new HashMap();
+
 // // Read value
 // String value = await storage.read(key: key);
 //
@@ -18,4 +18,4 @@
 // // Write value
 // await storage.write(key: key, value: value);
 
-//TODO : flutter pub add flutter_secure_storage
+// TODO : flutter pub add flutter_secure_storage

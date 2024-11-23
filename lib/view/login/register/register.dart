@@ -3,7 +3,9 @@ import 'package:flutter_princess_maker/common/button/pmbutton.dart';
 import 'package:flutter_princess_maker/common/react_size.dart';
 import 'package:flutter_princess_maker/common/text_widget/input.dart';
 import 'package:flutter_princess_maker/json/member.dart';
+import 'package:flutter_princess_maker/storage/pm_storage.dart';
 import 'package:flutter_princess_maker/view/login/register/register_frame.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../common/emptyBox.dart';
 
@@ -109,12 +111,22 @@ class _RegisterState extends State<Register> {
                 pmbutton(
                   context: context,
                   buttonText: '회원가입 완료',
-                  onpressed: () {
+                  onpressed: () async {
+                    String? temp = storage["fcm"];
+                    print("temp : " + temp!);
                     Member newMember = Member(
-                      studentId: '12345',
-                      nickname: 'JohnDoe',
+                      studentId: studentIDController.text.trim(),
+                      nickname: nicknameController.text.trim(),
+                      fcmToken: temp!,
                     );
-                    sendMemberData(newMember);
+                    int result = await sendMemberData(newMember);
+                    if(result==200){
+                      Navigator.of(context).pop();
+                      Fluttertoast.showToast(msg: "성공적으로 가입되었습니다.", gravity: ToastGravity.CENTER);
+                    } else {
+                      Fluttertoast.showToast(msg: "회원가입에 실패하였습니다", gravity: ToastGravity.CENTER);
+                    }
+                    
                     print("click 회원가입 완료");
                   },
                 ),

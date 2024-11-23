@@ -4,8 +4,11 @@ import 'package:flutter_princess_maker/common/react_size.dart';
 import 'package:flutter_princess_maker/common/text_widget/input.dart';
 import 'package:flutter_princess_maker/view/login/register/register_frame.dart';
 import 'package:flutter_princess_maker/view/mainView/root_tab.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../common/emptyBox.dart';
+import '../../json/member.dart';
+import '../../storage/pm_storage.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -103,11 +106,27 @@ class _LoginState extends State<Login> {
                 pmbutton(
                   context: context,
                   buttonText: '로그인',
-                  onpressed: () {
-                    //TODO : 회원 가입 로직 넣기
-                    Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(builder: (context) => RootTab()),
-                        (route) => false);
+                  onpressed: () async {
+                    String? temp = storage["fcm"];
+                    print("temp : " + temp!);
+                    Member newMember = Member(
+                      studentId: studentIDController.text.trim(),
+                      nickname: nicknameController.text.trim(),
+                      fcmToken: temp!,
+                    );
+                    int result = await doLogin(newMember);
+                    if(result<=200){
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => RootTab()), // NewPage()를 원하는 페이지로 교체하세요
+                      );
+                      Fluttertoast.showToast(msg: "로그인 완료.", gravity: ToastGravity.CENTER);
+                    } else {
+                      Fluttertoast.showToast(msg: "로그인에 실패하였습니다", gravity: ToastGravity.CENTER);
+                    }
+                    studentIDController.text = "";
+                    nicknameController.text = "";
+
+                    print("click 로그인 완료");
                   },
                 ),
               ],
