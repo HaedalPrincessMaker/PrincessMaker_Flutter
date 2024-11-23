@@ -6,6 +6,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_princess_maker/secret/app_key.dart';
+import 'package:flutter_princess_maker/storage/alarm_storage.dart';
 import 'package:flutter_princess_maker/storage/pm_storage.dart';
 import 'package:flutter_princess_maker/view/login/login_register.dart';
 import 'package:flutter_princess_maker/view/mainView/root_tab.dart';
@@ -179,6 +180,10 @@ void saveMessage(RemoteMessage message) {
   if (message.notification != null) {
     print('Message notification title: ${message.notification?.title}');
     print('Message notification body: ${message.notification?.body}');
+    print("get message title : ${message.notification?.title}");
+    if((message.notification?.title)!.contains("승인완료")) {
+      alarms.forEach((alarm) => alarm.isApproved = true);
+    }
 
     notice.add('${message.notification?.title} : ${message.notification?.body}');
 

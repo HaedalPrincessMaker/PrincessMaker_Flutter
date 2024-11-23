@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../const.dart';
+import '../json/member.dart';
 
 class FriendSearchDialog extends StatefulWidget {
   @override

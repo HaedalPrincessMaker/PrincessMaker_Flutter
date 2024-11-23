@@ -8,5 +8,7 @@ Dio pmdio = new Dio();
 final pmLogger = new Logger();
 
 String fffcm = "";
+String ssid = "";
+String sname = "";
 
 List<String> notice = [];

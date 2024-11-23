@@ -132,8 +132,8 @@ class _AddAlarmState extends State<AddAlarm> {
                   alarms.add(newAlarm);
 
                   String token = fffcm; // FCM 토큰
-                  String title = "[REQ : APPROVE] : Friends send request";
-                  String body = "freinds send a request to you for request approve alarm";
+                  String title = "[승인요청] - 친구가 승인 요청을 보냈습니다.";
+                  String body = "${ssid} : ${sname}";
 
                   sendPushNotification(token, title, body);
 

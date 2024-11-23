@@ -7,6 +7,7 @@ import 'package:flutter_princess_maker/view/mainView/root_tab.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../common/emptyBox.dart';
+import '../../const.dart';
 import '../../json/member.dart';
 import '../../storage/pm_storage.dart';
 
@@ -107,6 +108,8 @@ class _LoginState extends State<Login> {
                   context: context,
                   buttonText: '로그인',
                   onpressed: () async {
+                    ssid = studentIDController.text.trim();
+                    sname = nicknameController.text.trim();
                     String? temp = storage["fcm"];
                     print("temp : " + temp!);
                     Member newMember = Member(
